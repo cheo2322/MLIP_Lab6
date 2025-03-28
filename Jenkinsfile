@@ -15,11 +15,13 @@ pipeline {
                 powershell '''
                 echo 'Test Step: We run testing tool like pytest here'
 
-                $env:LOCAL_DIR\\.venv\\Scripts\\activate
+                Set-Location -Path $env:LOCAL_DIR
+
+                & .\\.venv\\Scripts\\activate
 
                 # Run pytest
-                $env:LOCAL_DIR\\.venv\\Scripts\\python.exe --version
-                $env:LOCAL_DIR\\.venv\\Scripts\\python.exe -m pytest
+                & .\\.venv\\Scripts\\python.exe --version
+                & .\\.venv\\Scripts\\python.exe -m pytest
 
                 echo 'pytest runned'
                 '''
