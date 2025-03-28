@@ -15,6 +15,7 @@ pipeline {
                 powershell '''
                 echo 'Test Step: We run testing tool like pytest here'
 
+                echo "LOCAL_DIR: ${env.LOCAL_DIR}"
                 cd ${env.LOCAL_DIR}
 
                 # fill out the path to conda here
