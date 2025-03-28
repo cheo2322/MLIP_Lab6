@@ -22,7 +22,6 @@ pipeline {
                 # pytest
 
                 echo 'pytest not runned'
-                exit 1 #comment this line after implementing Jenkinsfile
                 '''
 
             }
