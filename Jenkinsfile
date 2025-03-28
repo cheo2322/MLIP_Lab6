@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                powershell '''
+                sh '''#!/bin/bash
                 echo 'In C or Java, we can compile our program in this step'
                 echo 'In Python, we can build our package here or skip this step'
                 '''
@@ -12,24 +12,24 @@ pipeline {
         }
         stage('Test') {
             steps {
-                powershell '''
+                sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
 
-                Set-Location -Path $env:LOCAL_DIR
+                # TODO fill out the path to conda here
+                # source ./venv/bin/activate
 
-                & .\\.venv\\Scripts\\activate
+                # TODO Complete the command to run pytest
+                # pytest
 
-                # Run pytest
-                & .\\.venv\\Scripts\\python.exe --version
-                & .\\.venv\\Scripts\\python.exe -m pytest
-
-                echo 'pytest runned'
+                echo 'pytest not runned'
+                exit 1 #comment this line after implementing Jenkinsfile
                 '''
+
             }
         }
         stage('Deploy') {
             steps {
-                echo 'In this step, we deploy our project'
+                echo 'In this step, we deploy our porject'
                 echo 'Depending on the context, we may publish the project artifact or upload pickle files'
             }
         }
