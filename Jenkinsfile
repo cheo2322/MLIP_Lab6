@@ -15,20 +15,11 @@ pipeline {
                 powershell '''
                 echo 'Test Step: We run testing tool like pytest here'
 
-                # Verify LOCAL_DIR
-                if (-not $env:LOCAL_DIR) {
-                    Write-Error "Error: La variable LOCAL_DIR no está configurada."
-                    exit 1
-                }
-
-                # cd to LOCAL_DIR
-                cd $env:LOCAL_DIR
-
-                .\\.venv\\Scripts\\activate
+                $env:LOCAL_DIR\\.venv\\Scripts\\activate
 
                 # Run pytest
-                .\\.venv\\Scripts\\python.exe --version
-                .\\.venv\\Scripts\\python.exe -m pytest
+                $env:LOCAL_DIR\\.venv\\Scripts\\python.exe --version
+                $env:LOCAL_DIR\\.venv\\Scripts\\python.exe -m pytest
 
                 echo 'pytest runned'
                 '''
