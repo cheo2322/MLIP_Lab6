@@ -16,7 +16,7 @@ pipeline {
                 echo 'Test Step: We run testing tool like pytest here'
 
                 # fill out the path to conda here
-                source .venv/bin/activate
+                .\\.venv\\Scripts\\activate
 
                 # Complete the command to run pytest
                 pytest
