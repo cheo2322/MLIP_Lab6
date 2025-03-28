@@ -15,6 +15,8 @@ pipeline {
                 powershell '''
                 echo 'Test Step: We run testing tool like pytest here'
 
+                cd $LOCAL_DIR
+
                 # fill out the path to conda here
                 .venv\\Scripts\\activate
 
