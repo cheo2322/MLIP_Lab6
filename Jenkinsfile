@@ -18,8 +18,10 @@ pipeline {
                 # fill out the path to conda here
                 .\\.venv\\Scripts\\activate
 
+                .\\.venv\\Scripts\\python.exe --version
+
                 # Complete the command to run pytest
-                python -m pytest
+                .\\.venv\\Scripts\\python.exe -m pytest
 
                 echo 'pytest runned'
                 '''
