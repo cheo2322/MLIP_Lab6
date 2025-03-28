@@ -19,7 +19,7 @@ pipeline {
                 .\\.venv\\Scripts\\activate
 
                 # Complete the command to run pytest
-                pytest
+                python -m pytest
 
                 echo 'pytest runned'
                 '''
