@@ -15,20 +15,23 @@ pipeline {
                 powershell '''
                 echo 'Test Step: We run testing tool like pytest here'
 
-                echo "LOCAL_DIR: ${env.LOCAL_DIR}"
-                cd ${env.LOCAL_DIR}
+                # Verify LOCAL_DIR
+                if (-not $env:LOCAL_DIR) {
+                    Write-Error "Error: La variable LOCAL_DIR no está configurada."
+                    exit 1
+                }
 
-                # fill out the path to conda here
-                .venv\\Scripts\\activate
+                # cd to LOCAL_DIR
+                cd $env:LOCAL_DIR
 
-                .venv\\Scripts\\python.exe --version
+                .\\.venv\\Scripts\\activate
 
-                # Complete the command to run pytest
-                .venv\\Scripts\\python.exe -m pytest
+                # Run pytest
+                .\\.venv\\Scripts\\python.exe --version
+                .\\.venv\\Scripts\\python.exe -m pytest
 
                 echo 'pytest runned'
                 '''
-
             }
         }
         stage('Deploy') {
